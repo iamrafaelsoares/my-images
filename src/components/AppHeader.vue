@@ -1,19 +1,33 @@
 <template>
-  <div class="ui secondary pointing menu">
-    <router-link to="/" class="active item">
-      Image Storage 
-    </router-link>
-    <div class="right menu">
-      <div v-if="isLoggedIn" class="horizontal">
-        <router-link to="/" class="item">Galleries</router-link>
-        <router-link to="/upload" class="item">Upload</router-link>
-        <a class="item" @click="logout">Logout</a>
-      </div>
-
-      <a v-else href="#" class="ui item" @click="login">
-        Login
-      </a>
-    </div>
+  <div>
+    <vs-navbar center-collapsed>
+      <template #left>
+        <router-link to="/" custom v-slot="{ navigate }">
+          <span @click="navigate" role="link">
+            <h3>My Images</h3>
+          </span>
+        </router-link>
+      </template>
+      <vs-navbar-item>
+        Image Storage
+      </vs-navbar-item>
+      <template #right>
+        <div v-if="isLoggedIn" class="horizontal">
+          <router-link to="/" custom v-slot="{ navigate }">
+            <vs-button @click="navigate" role="link">
+              Galleries
+            </vs-button>
+          </router-link>
+          <router-link to="/upload" custom v-slot="{ navigate }">
+            <vs-button @click="navigate" role="link">
+              Upload
+            </vs-button>
+          </router-link>
+          <vs-button flat @click="logout">Logout</vs-button>
+        </div>
+        <vs-button v-else flat @click="login">Login</vs-button>
+      </template>
+    </vs-navbar>
   </div>
 </template>
 

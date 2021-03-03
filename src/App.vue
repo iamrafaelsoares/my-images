@@ -1,7 +1,9 @@
 <template>
   <div>
-    <app-header />
-    <div class="ui container">
+    <div class="navbar-wrapper">
+      <app-header />
+    </div>
+    <div class="main-content-wrapper">
       <router-view></router-view>
     </div>
   </div>
@@ -14,3 +16,12 @@ export default {
   name: 'App'
 }
 </script>
+<style>
+body {
+  background: #F8F8F8;
+}
+
+.main-content-wrapper {
+  margin-top: 65px;
+}
+</style>
